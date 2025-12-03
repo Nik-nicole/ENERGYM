@@ -6,3 +6,4 @@ build/
 .expo-shared/
 android/app/build/
 ios/build/
+.next/

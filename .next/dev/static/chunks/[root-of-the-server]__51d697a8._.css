@@ -551,10 +551,6 @@
     inset-block: calc(var(--spacing) * 0);
   }
 
-  .-top-8 {
-    top: calc(var(--spacing) * -8);
-  }
-
   .-top-12 {
     top: calc(var(--spacing) * -12);
   }
@@ -767,10 +763,6 @@
     margin-top: calc(var(--spacing) * 4);
   }
 
-  .mt-12 {
-    margin-top: calc(var(--spacing) * 12);
-  }
-
   .mt-auto {
     margin-top: auto;
   }
@@ -781,10 +773,6 @@
 
   .mb-2 {
     margin-bottom: calc(var(--spacing) * 2);
-  }
-
-  .mb-2\.5 {
-    margin-bottom: calc(var(--spacing) * 2.5);
   }
 
   .mb-3 {
@@ -811,42 +799,6 @@
     margin-bottom: calc(var(--spacing) * 16);
   }
 
-  .mb-20 {
-    margin-bottom: calc(var(--spacing) * 20);
-  }
-
-  .mb-120 {
-    margin-bottom: calc(var(--spacing) * 120);
-  }
-
-  .mb-130 {
-    margin-bottom: calc(var(--spacing) * 130);
-  }
-
-  .mb-140 {
-    margin-bottom: calc(var(--spacing) * 140);
-  }
-
-  .mb-150 {
-    margin-bottom: calc(var(--spacing) * 150);
-  }
-
-  .mb-160 {
-    margin-bottom: calc(var(--spacing) * 160);
-  }
-
-  .mb-200 {
-    margin-bottom: calc(var(--spacing) * 200);
-  }
-
-  .mb-1000 {
-    margin-bottom: calc(var(--spacing) * 1000);
-  }
-
-  .mb-\[10px\] {
-    margin-bottom: 10px;
-  }
-
   .mb-\[15px\] {
     margin-bottom: 15px;
   }
@@ -865,10 +817,6 @@
 
   .ml-4 {
     margin-left: calc(var(--spacing) * 4);
-  }
-
-  .ml-100 {
-    margin-left: calc(var(--spacing) * 100);
   }
 
   .ml-auto {
@@ -1384,11 +1332,6 @@
 
   .-translate-y-1\/2 {
     --tw-translate-y: calc(calc(1 / 2 * 100%) * -1);
-    translate: var(--tw-translate-x) var(--tw-translate-y);
-  }
-
-  .-translate-y-full {
-    --tw-translate-y: -100%;
     translate: var(--tw-translate-x) var(--tw-translate-y);
   }
 
