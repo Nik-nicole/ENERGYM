@@ -1,6 +1,6 @@
 # 🏋️‍♂️ ENERGYM — Sitio Web para Gimnasio
 
-![ENERGYM Preview](./portada.png)
+![Portada](/portada.png)
 
 ENERGYM es una plataforma web moderna diseñada para gimnasios que desean ofrecer una experiencia clara, atractiva y profesional a sus usuarios.  
 Incluye secciones de **sedes**, **planes**, **servicios**, y un hero dinámico que da la bienvenida a los visitantes con un diseño elegante y minimalista.
