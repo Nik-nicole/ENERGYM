@@ -1,0 +1,11 @@
+# ARCHIVOS A EXCLUIR DEL UPLOAD
+node_modules/
+.next/
+.env.local
+.git/
+build-hostinger.sh
+components/debug-env.tsx
+dist/
+*.log
+.DS_Store
+Thumbs.db
