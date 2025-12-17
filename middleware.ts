@@ -4,33 +4,35 @@ import { NextResponse } from "next/server"
 import type { NextRequest } from "next/server"
 
 export async function middleware(request: NextRequest) {
-  // CAPA 1: Protección de acceso a demo
   const demoToken = process.env.DEMO_ACCESS_TOKEN
-
-  // Si no hay token configurado, modo desarrollo - acceso abierto
-  if (!demoToken) {
-    return await updateSession(request)
-  }
-
   const url = request.nextUrl
   const pathname = url.pathname
   const response = NextResponse.next()
 
-  // Rutas excluidas de protección de demo
-  const excludedPaths = ['/demo-access', '/auth']
+  // Rutas excluidas de protección demo
+  const excludedPaths = ['/', '/demo-access', '/auth']
   const isExcluded = excludedPaths.some(path => pathname.startsWith(path))
 
-  // Verificar acceso por tres métodos: cookie, sesión Supabase, o query param
+  // Landing page abierta para todos
+  if (pathname === '/') {
+    return response
+  }
+
+  // Si no hay token configurado (modo desarrollo), acceso abierto a todo
+  if (!demoToken) {
+    return await updateSession(request)
+  }
+
   let hasDemoAccess = false
   let needsCookieSet = false
 
-  // 1. Verificar cookie de demo existente
+  // 1. Verificar cookie demo existente
   const demoCookie = request.cookies.get('demo_access')
   if (demoCookie?.value === 'true') {
     hasDemoAccess = true
   }
 
-  // 2. Verificar query param (solo si no hay cookie)
+  // 2. Verificar query param demo
   if (!hasDemoAccess && !isExcluded) {
     const providedToken = url.searchParams.get('demo')
     if (providedToken && providedToken === demoToken) {
@@ -39,7 +41,7 @@ export async function middleware(request: NextRequest) {
     }
   }
 
-  // 3. Verificar sesión Supabase (si no hay acceso demo)
+  // 3. Verificar sesión Supabase
   if (!hasDemoAccess) {
     const supabase = createServerClient(
       process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -59,20 +61,11 @@ export async function middleware(request: NextRequest) {
       },
     )
 
-    const {
-      data: { user },
-    } = await supabase.auth.getUser()
+    const { data: { user } } = await supabase.auth.getUser()
 
-    // Si tiene sesión Supabase válida, permitir acceso
-    if (user) {
-      // Verificar si es demo por user_metadata
-      const isDemo = user.user_metadata?.is_demo === "true"
-      if (isDemo) {
-        hasDemoAccess = true
-      } else {
-        // Opción: permitir acceso a cualquier usuario logueado
-        hasDemoAccess = true
-      }
+    // Verificar si el usuario tiene demo
+    if (user?.user_metadata?.is_demo === "true") {
+      hasDemoAccess = true
     }
   }
 
@@ -83,17 +76,17 @@ export async function middleware(request: NextRequest) {
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'lax',
       path: '/',
-      maxAge: 24 * 60 * 60, // 24 horas
+      maxAge: 24 * 60 * 60,
     })
   }
 
-  // Redirigir a acceso denegado si no cumple ninguna validación
+  // Redirigir a acceso denegado si no tiene demo y no está en rutas excluidas
   if (!hasDemoAccess && !isExcluded) {
     const accessDeniedUrl = new URL('/demo-access', request.url)
     return NextResponse.redirect(accessDeniedUrl)
   }
 
-  // CAPA 2: Protección de Supabase Auth (existente)
+  // Continuar con la capa de Supabase Auth existente
   return await updateSession(request)
 }
 
