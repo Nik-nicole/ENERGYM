@@ -6,7 +6,7 @@ import type { NextRequest } from "next/server"
 export async function middleware(request: NextRequest) {
   // CAPA 1: Protección de acceso a demo
   const demoToken = process.env.DEMO_ACCESS_TOKEN
-  
+
   // Si no hay token configurado, modo desarrollo - acceso abierto
   if (!demoToken) {
     return await updateSession(request)
@@ -65,7 +65,14 @@ export async function middleware(request: NextRequest) {
 
     // Si tiene sesión Supabase válida, permitir acceso
     if (user) {
-      hasDemoAccess = true
+      // Verificar si es demo por user_metadata
+      const isDemo = user.user_metadata?.is_demo === "true"
+      if (isDemo) {
+        hasDemoAccess = true
+      } else {
+        // Opción: permitir acceso a cualquier usuario logueado
+        hasDemoAccess = true
+      }
     }
   }
 
