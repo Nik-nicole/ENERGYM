@@ -9,16 +9,14 @@ export default function Hero() {
     <div className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       {/* Background Video with Overlay */}
       <div className="absolute inset-0 z-0 overflow-hidden">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto -translate-x-1/2 -translate-y-1/2 object-cover"
-        >
-          <source src="/sony-a7iv.mp4" type="video/mp4" />
-          Tu navegador no soporta el elemento de video.
-        </video>
+        <iframe
+            className="absolute top-1/2 left-1/2 w-full h-full -translate-x-1/2 -translate-y-1/2 object-cover"
+            src="https://www.youtube.com/embed/RJ1izzADlzY?autoplay=1&mute=1&loop=1&playlist=RJ1izzADlzY"
+            title="YouTube video background"
+            frameBorder="0"
+            allow="autoplay; encrypted-media; loop; fullscreen"
+            allowFullScreen
+          ></iframe>
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-background/80" />
       </div>
 
