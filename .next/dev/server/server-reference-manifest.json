@@ -1,5 +1,28 @@
 {
-  "node": {},
+  "node": {
+    "00c76f6123809c7d9a0ea12a94dc37b625f71bc52c": {
+      "workers": {
+        "app/dashboard/page": {
+          "moduleId": "[project]/.next-internal/server/app/dashboard/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/dashboard/layout.tsx [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "$$RSC_SERVER_ACTION_0",
+          "filename": "app/dashboard/layout.tsx"
+        },
+        "app/dashboard/profile/page": {
+          "moduleId": "[project]/.next-internal/server/app/dashboard/profile/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/dashboard/layout.tsx [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "$$RSC_SERVER_ACTION_0",
+          "filename": "app/dashboard/layout.tsx"
+        }
+      },
+      "layer": {
+        "app/dashboard/page": "rsc",
+        "app/dashboard/profile/page": "rsc"
+      },
+      "filename": "app/dashboard/layout.tsx",
+      "exportedName": "$$RSC_SERVER_ACTION_0"
+    }
+  },
   "edge": {},
   "encryptionKey": "ikPn50pOALsdF21U5a+GVyMzlDZgJEK8fNmHBZVCjkE="
 }

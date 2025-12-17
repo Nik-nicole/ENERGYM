@@ -10,6 +10,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { createClient } from "@/lib/supabase/client"
 import { Eye, EyeOff } from "lucide-react"
+import DebugEnv from "@/components/debug-env"
 
 export default function LoginPage() {
   const [email, setEmail] = useState("")
@@ -41,6 +42,7 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen w-full flex flex-col items-center justify-center p-4 bg-background relative">
+      <DebugEnv />
       <div className="flex justify-center w-full mb-[20px]">
         <Link href="/">
           <img 
