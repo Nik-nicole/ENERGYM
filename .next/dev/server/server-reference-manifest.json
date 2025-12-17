@@ -7,17 +7,10 @@
           "async": false,
           "exportedName": "$$RSC_SERVER_ACTION_0",
           "filename": "app/dashboard/layout.tsx"
-        },
-        "app/dashboard/profile/page": {
-          "moduleId": "[project]/.next-internal/server/app/dashboard/profile/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/dashboard/layout.tsx [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
-          "async": false,
-          "exportedName": "$$RSC_SERVER_ACTION_0",
-          "filename": "app/dashboard/layout.tsx"
         }
       },
       "layer": {
-        "app/dashboard/page": "rsc",
-        "app/dashboard/profile/page": "rsc"
+        "app/dashboard/page": "rsc"
       },
       "filename": "app/dashboard/layout.tsx",
       "exportedName": "$$RSC_SERVER_ACTION_0"

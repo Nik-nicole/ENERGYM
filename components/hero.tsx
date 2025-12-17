@@ -7,48 +7,49 @@ import { ChevronDown } from "lucide-react"
 export default function Hero() {
   return (
     <div className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-      {/* Background Video with Overlay */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
-        <iframe
-            className="absolute top-1/2 left-1/2 w-full h-full -translate-x-1/2 -translate-y-1/2 object-cover"
-            src="https://www.youtube.com/embed/RJ1izzADlzY?autoplay=1&mute=1&loop=1&playlist=RJ1izzADlzY"
-            title="YouTube video background"
-            frameBorder="0"
-            allow="autoplay; encrypted-media; loop; fullscreen"
-            allowFullScreen
-          ></iframe>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-background/80" />
-      </div>
+  {/* Background Video with Overlay */}
+  <div className="absolute inset-0 z-0 overflow-hidden">
+    <iframe
+      className="absolute top-1/2 left-1/2 w-[150%] h-[150%] min-w-[150%] min-h-[150%] -translate-x-1/2 -translate-y-1/2 md:w-[200%] md:h-[200%] md:min-w-[200%] md:min-h-[200%]"
+      src="https://www.youtube.com/embed/RJ1izzADlzY?autoplay=1&mute=1&loop=1&playlist=RJ1izzADlzY&controls=0&modestbranding=1&showinfo=0&rel=0&iv_load_policy=3&disablekb=1&enablejsapi=1&widgetid=1&cc_lang_pref=es&cc_load_policy=0"
+      title="YouTube video background"
+      frameBorder="0"
+      allow="autoplay; encrypted-media; loop; fullscreen"
+      allowFullScreen
+    ></iframe>
 
-      {/* Hero Content */}
-      <div className="relative z-10 text-center px-4 max-w-3xl mx-auto">
-        <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tighter">SUBE TU NIVEL</h1>
-        <p className="text-lg md:text-xl text-foreground/80 mb-12 tracking-wide">
-          TRANSFORMA TU CUERPO, SUPERA TUS LÍMITES, EMPIEZA HOY
-        </p>
+    {/* Overlay gradient */}
+    <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-background/80" />
+  </div>
 
-        {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link href="/auth/login">
-            <Button className="bg-secondary text-secondary-foreground hover:bg-secondary/90 px-8 py-6 text-base font-semibold">
-              COMPARAR PLAN
-            </Button>
-          </Link>
-          <Link href="#servicios">
-            <Button
-              variant="outline"
-              className="border-secondary text-foreground hover:bg-secondary/10 px-8 py-6 text-base font-semibold bg-transparent"
-            >
-              NUEVOS SERVICIOS
-            </Button>
-          </Link>
-        </div>
+  {/* Hero Content */}
+  <div className="relative z-10 text-center px-4 max-w-3xl mx-auto">
+    <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tighter">SUBE TU NIVEL</h1>
+    <p className="text-lg md:text-xl text-foreground/80 mb-12 tracking-wide">
+      TRANSFORMA TU CUERPO, SUPERA TUS LÍMITES, EMPIEZA HOY
+    </p>
 
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <ChevronDown size={32} className="text-secondary" />
-        </div>
-      </div>
+    <div className="flex flex-col sm:flex-row gap-4 justify-center">
+      <Link href="/auth/login">
+        <Button className="bg-secondary text-secondary-foreground hover:bg-secondary/90 px-8 py-6 text-base font-semibold">
+          COMPARAR PLAN
+        </Button>
+      </Link>
+      <Link href="#servicios">
+        <Button
+          variant="outline"
+          className="border-secondary text-foreground hover:bg-secondary/10 px-8 py-6 text-base font-semibold bg-transparent"
+        >
+          NUEVOS SERVICIOS
+        </Button>
+      </Link>
     </div>
+
+    <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <ChevronDown size={32} className="text-secondary" />
+    </div>
+  </div>
+</div>
+
   )
 }
