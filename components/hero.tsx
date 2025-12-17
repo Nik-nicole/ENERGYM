@@ -16,7 +16,7 @@ export default function Hero() {
           playsInline
           className="absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto -translate-x-1/2 -translate-y-1/2 object-cover"
         >
-          <source src="/SONY a7IV.mp4" type="video/mp4" />
+          <source src="/sony-a7iv.mp4" type="video/mp4" />
           Tu navegador no soporta el elemento de video.
         </video>
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-background/80" />
