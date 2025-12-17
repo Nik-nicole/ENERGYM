@@ -41,7 +41,7 @@ export async function middleware(request: NextRequest) {
     }
   }
 
-  // 3. Verificar sesión Supabase
+  // 3. Verificar sesión Supabase y campo is_demo
   if (!hasDemoAccess && !isExcluded) {
     const supabase = createServerClient(
       process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -63,8 +63,11 @@ export async function middleware(request: NextRequest) {
 
     const { data: { user } } = await supabase.auth.getUser()
 
-    // Solo permitir acceso si user_metadata.is_demo === "true"
+    // Permitir acceso si user_metadata.is_demo === "true" o si es usuario logueado normal
     if (user?.user_metadata?.is_demo === "true") {
+      hasDemoAccess = true
+    } else if (user) {
+      // Usuario logueado normal sin demo - permitir acceso
       hasDemoAccess = true
     }
   }
@@ -85,7 +88,7 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL('/demo-access', request.url))
   }
 
-  // Continuar con la capa de Supabase Auth existente
+  // ✅ Solo actualizar la sesión si el usuario pasó la validación demo
   return await updateSession(request)
 }
 
